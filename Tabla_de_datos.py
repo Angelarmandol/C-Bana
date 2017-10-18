@@ -71,8 +71,10 @@ class App(Frame):
                              arreglo[i], 'Ok'))
 
     def LoadTable(self):
-         self.treeview.insert('', '999', text=variable, values=('xXx',
-                              '0.0xxx', 'Ok'))
+     for i in range(10):
+            self.treeview.insert('', '999', text=variable, values=('xXx',
+                             arreglo[i], 'Ok'))
+    
     
 
 def main():
