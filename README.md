@@ -24,3 +24,5 @@ ________________________________________________________________________________
 
 https://www.python.org/download/releases/2.7/
 http://www.tkdocs.com/tutorial/install.html
+______________________________________________________________________________________________
+https://www.bugzilla.org/download/#v50
