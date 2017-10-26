@@ -1,12 +1,10 @@
 # C-Bana
 
-<html>
+ 
 Aplicación que realiza pruebas de bondad de ajuste para corridas de números pseudoaleatorios
 El proyecto se realizara en Python 2.7.14 con la libreria KTInder para el desarrollo de la interfaz grafica
 
-
-  <p2>Hola Mundo</p2>
-  texto denttro
+ 
  
 Grafico 
 La aplicacion grafica se desarrollara en Python 3.6 y la libreria tkinder.
@@ -25,12 +23,13 @@ El algoritmo se puede integrar a la interfaz sin problemas.
 ___________________________________________________________________________________
 
 
-</html>
+______________________________________________________________________________________________
 
+
+Link de interes:
 https://www.python.org/download/releases/2.7/
 http://www.tkdocs.com/tutorial/install.html
-______________________________________________________________________________________________
-https://www.bugzilla.org/download/#v50
+https://www.bugzilla.org/download/#v50 #Software de testeo
 
 
 Reportes:
