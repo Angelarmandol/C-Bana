@@ -22,15 +22,14 @@ pero en python 3 es valido <<<< print ('holamundo')
 El algoritmo se puede integrar a la interfaz sin problemas.
 ___________________________________________________________________________________
 
-
-______________________________________________________________________________________________
+ 
 
 
 Link de interes:
 https://www.python.org/download/releases/2.7/
 http://www.tkdocs.com/tutorial/install.html
 https://www.bugzilla.org/download/#v50 #Software de testeo
-
+http://librosweb.es/libro/python/capitulo_8/metodos_de_retorno.html
 
 Reportes:
 https://docs.google.com/document/d/1d7_bFc7ZreFQgni_irXBT4sip2ixrVN0MYpm7cxB7Zs/edit?usp=sharing
