@@ -2,3 +2,14 @@
   - Desarrollo de la ventana para cargar los nueros pseudoaleatorios
   - Desarrollar la ventana para cargar datos deesde excel
   
+Sobre el algoritmo
+
+1-Definir α
+
+X 2-Guardar la serie de números en un arreglo de x tamaño
+x 3-En un arreglo paralelo identificar las corridas (escribe mas y menos dependiendo de los números en el arreglo anterior)
+x 4-Contar la cantidad de corridas por arriba y de corridas por abajo
+
+5-Calcular la media [(2*número total de datos)-1]/3
+6-Calcular la varianza [(16*número total de datos)-29]/90
+7-Comparar en la tabla
