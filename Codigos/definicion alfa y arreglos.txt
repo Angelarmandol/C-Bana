@@ -1,0 +1,4 @@
+alfa= input('ingrese el valor de alfa: ')
+print("alfa es: ", alfa)
+
+int x= input('ingrese el valor de numeros de la serie: ')
