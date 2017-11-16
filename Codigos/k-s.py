@@ -11,6 +11,12 @@ funcionM()
 fprima()
 calcularDmas(funcion, fprima)
 calcularDmenos(funcion,fprima)
+DN=max(Dmas) #paso 6 calcular DN
+if max(Dmenos)>DN:
+	pass
+	DN= max(Dmenos)
+CDatos=(DN-0.2/50)*(sqrt(len(aOrd))+0.26+(0.5/sqrt(len(aOrd)))) #=(H5-0.2/50)*(RAIZ(50)+0.26+(0.5/RAIZ(50)))
+print "el c de datos es: "+CDatos
 
 	
 def	burbuja(aOrd): #ordena el arreglo de menor a mayor
