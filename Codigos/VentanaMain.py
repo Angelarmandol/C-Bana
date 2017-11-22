@@ -1,14 +1,29 @@
 try:
- import tkinter
- from tkinter import *
- from tkinter.ttk import *
- from array import *
+	from tkinter import *
+	from tkinter.ttk import *
 
-except ImportError:
- raise ImportError("Se requiere el modulo Tkinter")
-
-import tkinter as tk
+    
+except ImportError:  # Python 3
+    from tkinter import *
+   
+from array import *
 import ctypes 
+import tkinter as tk
+import random
+
+from random import *
+
+
+
+
+'''
+Criterios:
+Es numerico: numerico
+Son mas o igual a 50: mayorcincuenta
+Algun numnero valido ( por defecto, si): numervalido
+pasa o no pasa: pasa
+'''
+
 
 variable = "xxxx"
 arreglo = array('d', [0.23, 0.654, 0.8763, 0.89034, 0.236, 0.3451, 0.345, 0.1231, 0.3241, 0.7230])
@@ -26,44 +41,88 @@ def hola():
     print ("Hola!")
 
 
-
-def comprobar():
+rango=0
+def comprobar(a):
 	 
-	##antes de comprobar, verificar que este no este vacia
+	 
+	a=texto.get("1.0","end-1c")
+	numerico=0
+	mayorcincuenta=0
+	numerovalido=1
 
-	global a
-	a = texto.get("1.0",END)
-	a = a.replace(" ", "\n")
-	a = a.split("\n")
+	pasa=0
+	#a = "0.25051451 0.8521 0.5454 0.54545 0.545454 0.65665 0.14564654 0.156654156 0.5458454 0.5445445 0.787878 0.986535"
+	'''
+	a = " "
+	alea=0
+	for i in range(50):
+		alea = random.random()
+		a = a+" "+repr(alea)
+'''
+	
 
-	b = len(a)
-	for i in range (b):
-		print (a[i])
+	#print (a)
+	if(a.isdigit()):
+		print ("no es numerica")
+		numerico=0
+	else:
+		print("numerica")
+		numerico=1
+		print (" ")
+		#print (a)
+		
 
-
-	print ("comprobando")
-	b = len(a)
-	for i in range (b-1):
-		if(a[i].isdigit()):
-			print ("no es numerica!!!!")
-
-		else:
-			print("numerica")
-		 
-
+		a = a.split(" ")
+		#print(a)
+		#a.pop(0)
+		#a.pop(0)
+		b = len(a)
+		contador=0
+		
+	'''
+		for i in range (b):
+			print (a[i])
+			print("/////"+repr(b))
+	'''
+	a=a[0].split("\n")
+	print(a[0])
+	print(a[1])
+	print ("longiyud es "+repr(len(a)))
 	rango = len(a)
+	
+	if(rango>=50):
+		print ("Son mas de cincuenta, si pasa")
+		mayorcincuenta=1
+	else:
+		print("Son menos de cincuanta, no pasa")
 
+		mayorcincuenta=0
+	'''
 	try:
-		for i in range (rango-1):
+		for i in range (rango):
 			float(a[i])
 	except ValueError:
 	    print ("Oops!  "+repr(a[i])+"no es un numero valido")
-	return a
+	    #numerovalido=0
+	'''
 
+	if(numerico == 1 and mayorcincuenta == 1 and numerovalido==1):
+		print("No hay nada malo")
+		return a
+	else:
+		print("si hay algo malo")
+		numerico=0
+		mayorcincuenta=0
+		numerovalido=1
+		pasa=0
+
+
+	
 def otraventana():
-	b = len(a)
-	comprobar()
-	if (b!=0):
+	
+	print ("cantidad esperada es "+repr(len(a)))
+	comprobar(a)
+	if (len(a)!=0):
 		ventana2 = tk.Tk()
 		tv = Treeview(ventana2)
 		
@@ -94,7 +153,7 @@ def otraventana():
 	else:
 	 print("no hay datos")
 	 b = 0
-	 ctypes.windll.user32.MessageBoxW(0, "No hay numeros para generar la tabla", "Error", 1)
+	 ctypes.windll.user32.MessageBoxW(0, "No hay numeros suficientes para generar la tabla", "Error", 1)
 ##  Styles:
 ##  0 : OK
 ##  1 : OK | Cancel
@@ -162,4 +221,3 @@ boton.pack()
 
 #Muestra la ventana
 ventana.mainloop()
-
