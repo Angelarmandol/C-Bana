@@ -149,28 +149,34 @@ def otraventana():
     print("el valor de la variable rango 2 es: "+repr(rango2))
     ventana2 = tk.Tk()
     tv = Treeview(ventana2)
-        
-    ventana2.geometry("600x200")
-    ventana2.resizable(False, False) #para no permitir 
+
+    #tv.grid(sticky = (N,S,W,E))
+    #tv.grid_rowconfigure(0, weight = 1)
+    #tv.grid_columnconfigure(0, weight = 1)
+
+
+    #ventana2.geometry("600x200")
+    #ventana2.resizable(True, True) #para no permitir 
     ventana2.title("Tabla de datos")
     tv['columns'] = ('starttime', 'endtime', 'status', 'wea1')
 
- 
+    tv.heading('#0', text='i')
+    tv.column('#0', anchor='center', width=100)
 
     tv.heading('starttime', text='Numeros Ordenados')
-    tv.column('starttime', anchor='center', width=100)
+    tv.column('starttime', anchor='center', width=200)
 
     tv.heading('endtime', text='Numeros Pseudoaleatorios')
-    tv.column('endtime', anchor='center', width=100)
+    tv.column('endtime', anchor='center', width=200)
 
     tv.heading('status', text='f(x)=i/n')
-    tv.column('status', anchor='center', width=100)
+    tv.column('status', anchor='center', width=200)
 
     tv.heading('wea1', text='wea2')
-    tv.column('wea1', anchor='center', width=100)
+    tv.column('wea1', anchor='center', width=200)
 
-    tv.grid(sticky = (N,S,W,E))
-        
+
+
         
     print("longitud de a es "+repr(rango2))
     #insert normal
@@ -178,10 +184,8 @@ def otraventana():
 
     print("valor a list: "+repr(a[0]))
     for g in range(rango2):
-        tv.insert('', 'end', values=('burbuja',a[g], 'EfeDeEquisIEntreEne', 'wea3'))
-    #self.treeview = tv
-    #self.grid_rowconfigure(0, weight = 1)
-    #self.grid_columnconfigure(0, weight = 1)
+        tv.insert('', 'end', text= g, values=('burbuja',a[g], 'EfeDeEquisIEntreEne', 'wea3'))
+    tv.pack()
     ventana2.mainloop()
         
     
