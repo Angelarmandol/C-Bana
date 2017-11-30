@@ -168,9 +168,9 @@ def otraventana():
     comprobar()
     print("el valor de la variable rango 2 es: "+repr(rango2))
     ventana2 = tk.Tk()
-    tv = Treeview(ventana2)
-
-    #tv.grid(sticky = (N,S,W,E))
+    tv = Treeview(ventana2, selectmode="extended",columns=("A","B"))
+    ventana2.geometry("900x500")
+    tv.pack(expand=YES, fill=BOTH)
     #tv.grid_rowconfigure(0, weight = 1)
     #tv.grid_columnconfigure(0, weight = 1)
 
