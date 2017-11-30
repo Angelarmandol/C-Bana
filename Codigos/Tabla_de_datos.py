@@ -35,7 +35,7 @@ rango2=0
 aOrd=[]
 aOrdGlobal=[]
 respa  = []
-
+efedeexisi = []
 def resolucionPrincipal(resol):
     ventana.geometry("1000x600")
     #ventana.mainloop()
@@ -44,7 +44,7 @@ def hola():
     print ("Hola!")
 
 def burbuja(aOrd): #ordena el arreglo de menor a mayor
-    global respa
+    
     respa = a
     
 
@@ -71,8 +71,9 @@ def comprobar():
     numerico=0
     mayorcincuenta=0
     numerovalido=1
-
+    
     pasa=0
+    a=a.replace(",",".")
     #a = "0.25051451 0.8521 0.5454 0.54545 0.545454 0.65665 0.14564654 0.156654156 0.5458454 0.5445445 0.787878 0.986535"
     '''
     a = " "
@@ -107,6 +108,7 @@ def comprobar():
             print("/////"+repr(b))
     '''
     a=a[0].split("\n")
+
     print(a[0])
     print(a[1])
     print ("longiyud es "+repr(len(a)))
@@ -181,10 +183,10 @@ def otraventana():
     tv.heading('#0', text='i')
     tv.column('#0', anchor='center', width=100)
 
-    tv.heading('starttime', text='Numeros Ordenados')
+    tv.heading('starttime', text='Numeros Pseudoaleatorios')
     tv.column('starttime', anchor='center', width=200)
 
-    tv.heading('endtime', text='Numeros Pseudoaleatorios')
+    tv.heading('endtime', text='Numeros ordenados')
     tv.column('endtime', anchor='center', width=200)
 
     tv.heading('status', text='f(x)=i/n')
@@ -193,18 +195,25 @@ def otraventana():
     tv.heading('wea1', text='wea2')
     tv.column('wea1', anchor='center', width=200)
 
-    respa = a
-    
-    burbuja(a)
-
-    print("longitud de a es "+repr(rango2))
+    respa = a[:] #no me jodas python!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! es una copia de la lista, otro objeto
+    aOrd=a
+    #print("primer valor de  a es: "+repr(a[0]))
+    burbuja(aOrd)
+    #print("despues de burbuja, valor de a es: "+repr(a[0]))
+    #print("despues de burbuja, valor de respa es: "+repr(respa[0]))
+    #print("longitud de a es "+repr(rango2))
     #insert normal
     #tv.insert('', '999', text=variable, values=('xXx','99', 'Ok'))
+    efedeexisi = aOrd[:]
 
-    print("valor a list: "+repr(a[0]))
+    rango = len(efedeexisi)
+    for i in range(rango):
+        efedeexisi[i]=float(efedeexisi[i])/rango
+    
+
     #print ("longiud de aOrd es: "+ repr(len(aOrd)))
     for g in range(rango2):
-        tv.insert('', 'end', text= g, values=(respa[g], a[g], 'EfeDeEquisIEntreEne', 'wea3'))
+        tv.insert('', 'end', text= g, values=(respa[g], a[g], efedeexisi[g], 'wea3'))
     tv.pack()
     ventana2.mainloop()
         
@@ -267,7 +276,7 @@ ventana.config(menu=menubarra)
 
 #texto = label("hola")
  
-texto = Text(ventana, height=20, width=40)
+texto = Text(ventana, height=50, width=40)
 texto.pack()
 texto.config(width=200)
  
