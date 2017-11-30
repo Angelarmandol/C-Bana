@@ -36,6 +36,15 @@ aOrd=[]
 aOrdGlobal=[]
 respa  = []
 efedeexisi = []
+funcion=[]
+derivada=[]
+Dmas=[]
+Dmenos=[]
+exp=2.718281828
+
+
+
+
 def resolucionPrincipal(resol):
     ventana.geometry("1000x600")
     #ventana.mainloop()
@@ -168,15 +177,16 @@ def otraventana():
     comprobar()
     print("el valor de la variable rango 2 es: "+repr(rango2))
     ventana2 = tk.Tk()
-    tv = Treeview(ventana2, selectmode="extended",columns=("A","B"))
+
+    scrollbar2 = Scrollbar(ventana2)
+    scrollbar2.pack(side = RIGHT, fill = Y) 
+
+    tv = Treeview(ventana2, yscrollcommand=scrollbar2.set)
     ventana2.geometry("900x500")
     tv.pack(expand=YES, fill=BOTH)
-    #tv.grid_rowconfigure(0, weight = 1)
-    #tv.grid_columnconfigure(0, weight = 1)
 
+    
 
-    #ventana2.geometry("600x200")
-    #ventana2.resizable(True, True) #para no permitir 
     ventana2.title("Tabla de datos")
     tv['columns'] = ('starttime', 'endtime', 'status', 'wea1')
 
@@ -192,7 +202,7 @@ def otraventana():
     tv.heading('status', text='f(x)=i/n')
     tv.column('status', anchor='center', width=200)
 
-    tv.heading('wea1', text='wea2')
+    tv.heading('wea1', text='f`(x)=1-e(-xi/1.22)')
     tv.column('wea1', anchor='center', width=200)
 
     respa = a[:] #no me jodas python!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! es una copia de la lista, otro objeto
@@ -204,16 +214,19 @@ def otraventana():
     #print("longitud de a es "+repr(rango2))
     #insert normal
     #tv.insert('', '999', text=variable, values=('xXx','99', 'Ok'))
-    efedeexisi = aOrd[:]
+    efedeexisi = aOrd[:] # again!!!!!!!!!!!!
 
     rango = len(efedeexisi)
     for i in range(rango):
         efedeexisi[i]=float(efedeexisi[i])/rango
-    
+    derivada=a[:]   
+    for x in range(rango2):
+        valorder = float(aOrd[x])/1.22
+        derivada[x]=1-(exp*(valorder))
 
     #print ("longiud de aOrd es: "+ repr(len(aOrd)))
     for g in range(rango2):
-        tv.insert('', 'end', text= g, values=(respa[g], a[g], efedeexisi[g], 'wea3'))
+        tv.insert('', 'end', text= g, values=(respa[g], a[g], efedeexisi[g], derivada[g]))
     tv.pack()
     ventana2.mainloop()
         
@@ -275,11 +288,18 @@ ventana.config(menu=menubarra)
 ##################################### menu
 
 #texto = label("hola")
- 
-texto = Text(ventana, height=50, width=40)
+scrollbar = Scrollbar(ventana)
+scrollbar.pack(side = RIGHT, fill = Y) 
+
+canvas = Canvas(ventana, bd=0, highlightthickness=0, yscrollcommand=scrollbar.set)
+scrollbar.config(command=canvas.yview)
+canvas.pack(side=LEFT, fill=BOTH, expand=TRUE)
+
+texto = Text(canvas, wrap=WORD, yscrollcommand=scrollbar.set, height=50, width=40)
 texto.pack()
 texto.config(width=200)
- 
+
+
 boton = tk.Button(ventana, text="Comprobar", command=comprobar) 
 boton.pack()
 
