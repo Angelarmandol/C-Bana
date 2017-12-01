@@ -41,9 +41,13 @@ derivada=[]
 Dmas=[]
 Dmenos=[]
 exp=2.718281828
+numerico=0
+mayorcincuenta=0
+numerovalido=1
+pasa=0
 
 
-
+ 
 
 def resolucionPrincipal(resol):
     ventana.geometry("1000x600")
@@ -51,7 +55,10 @@ def resolucionPrincipal(resol):
 
 def hola():
     print ("Hola!")
-
+    print("Numerico: "+repr(numerico))
+    print("Los numeros son mayores a cincuenta: "+repr(mayorcincuenta))
+    print("Numero valdio: "+repr(numerovalido))
+    print("Pasa"+repr(pasa))
 def burbuja(aOrd): #ordena el arreglo de menor a mayor
     
     respa = a
@@ -69,13 +76,12 @@ def burbuja(aOrd): #ordena el arreglo de menor a mayor
     global aOrdGlobal
     aOrdGlobal = aOrd
 
+
+
 def comprobar():
     global a
-     
-
-
-
-
+    global pasa
+    global numerico
     a=texto.get("1.0","end-1c")
     numerico=0
     mayorcincuenta=0
@@ -93,15 +99,17 @@ def comprobar():
 '''
     
 
-    #print (a)
+    
     if(a.isdigit()):
         print ("no es numerica")
         numerico=0
+        hola()
     else:
-        print("numerica")
+        print("numerica???????")
         numerico=1
+        hola()
         print (" ")
-        #print (a)
+        
         
 
         a = a.split(" ")
@@ -124,41 +132,27 @@ def comprobar():
     rango = len(a)
     
 
-
-
-
-
-
     global rango2
     rango2=rango
     print("se a guardado como rango2 "+repr(rango2))
   
 
-
-
-
-
-
-
     if(rango>=50):
         print ("Son mas de cincuenta, si pasa")
         mayorcincuenta=1
+        hola()
     else:
         print("Son menos de cincuanta, no pasa")
 
         mayorcincuenta=0
-        ctypes.windll.user32.MessageBoxW(0, "No hay numeros suficientes para generar la tabla", "Error", 1)
-    '''
-    try:
-        for i in range (rango):
-            float(a[i])
-    except ValueError:
-        print ("Oops!  "+repr(a[i])+"no es un numero valido")
-        #numerovalido=0
-    '''
+        hola()
+        ctypes.windll.user32.MessageBoxW(0, "No hay numeros suficientes para generar la tabla", "Error", 0)
+  
 
     if(numerico == 1 and mayorcincuenta == 1 and numerovalido==1):
         print("No hay nada malo")
+        pasa=1
+        hola()
        
     else:
         print("si hay algo malo")
@@ -166,7 +160,9 @@ def comprobar():
         mayorcincuenta=0
         numerovalido=1
         pasa=0
+        hola()
 
+    
     print("Termina comprobar, a es:")
     print (a[0])
     print (a[1])
@@ -175,60 +171,64 @@ def comprobar():
 def otraventana():
 
     comprobar()
-    print("el valor de la variable rango 2 es: "+repr(rango2))
-    ventana2 = tk.Tk()
 
-    scrollbar2 = Scrollbar(ventana2)
-    scrollbar2.pack(side = RIGHT, fill = Y) 
+    if(pasa==1):
+        print("el valor de la variable rango 2 es: "+repr(rango2))
+        ventana2 = tk.Tk()
 
-    tv = Treeview(ventana2, yscrollcommand=scrollbar2.set)
-    ventana2.geometry("900x500")
-    tv.pack(expand=YES, fill=BOTH)
+        scrollbar2 = Scrollbar(ventana2)
+        scrollbar2.pack(side = RIGHT, fill = Y) 
 
-    
+        tv = Treeview(ventana2, yscrollcommand=scrollbar2.set)
+        ventana2.geometry("900x500")
+        tv.pack(expand=YES, fill=BOTH)
 
-    ventana2.title("Tabla de datos")
-    tv['columns'] = ('starttime', 'endtime', 'status', 'wea1')
+        
 
-    tv.heading('#0', text='i')
-    tv.column('#0', anchor='center', width=100)
+        ventana2.title("Tabla de datos")
+        tv['columns'] = ('starttime', 'endtime', 'status', 'wea1')
 
-    tv.heading('starttime', text='Numeros Pseudoaleatorios')
-    tv.column('starttime', anchor='center', width=200)
+        tv.heading('#0', text='i')
+        tv.column('#0', anchor='center', width=100)
 
-    tv.heading('endtime', text='Numeros ordenados')
-    tv.column('endtime', anchor='center', width=200)
+        tv.heading('starttime', text='Numeros Pseudoaleatorios')
+        tv.column('starttime', anchor='center', width=200)
 
-    tv.heading('status', text='f(x)=i/n')
-    tv.column('status', anchor='center', width=200)
+        tv.heading('endtime', text='Numeros ordenados')
+        tv.column('endtime', anchor='center', width=200)
 
-    tv.heading('wea1', text='f`(x)=1-e(-xi/1.22)')
-    tv.column('wea1', anchor='center', width=200)
+        tv.heading('status', text='f(x)=i/n')
+        tv.column('status', anchor='center', width=200)
 
-    respa = a[:] #no me jodas python!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! es una copia de la lista, otro objeto
-    aOrd=a
-    #print("primer valor de  a es: "+repr(a[0]))
-    burbuja(aOrd)
-    #print("despues de burbuja, valor de a es: "+repr(a[0]))
-    #print("despues de burbuja, valor de respa es: "+repr(respa[0]))
-    #print("longitud de a es "+repr(rango2))
-    #insert normal
-    #tv.insert('', '999', text=variable, values=('xXx','99', 'Ok'))
-    efedeexisi = aOrd[:] # again!!!!!!!!!!!!
+        tv.heading('wea1', text='f`(x)=1-e(-xi/1.22)')
+        tv.column('wea1', anchor='center', width=200)
 
-    rango = len(efedeexisi)
-    for i in range(rango):
-        efedeexisi[i]=float(efedeexisi[i])/rango
-    derivada=a[:]   
-    for x in range(rango2):
-        valorder = float(aOrd[x])/1.22
-        derivada[x]=1-(exp*(valorder))
+        respa = a[:] #no me jodas python!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! es una copia de la lista, otro objeto
+        aOrd=a
+        #print("primer valor de  a es: "+repr(a[0]))
+        burbuja(aOrd)
+        #print("despues de burbuja, valor de a es: "+repr(a[0]))
+        #print("despues de burbuja, valor de respa es: "+repr(respa[0]))
+        #print("longitud de a es "+repr(rango2))
+        #insert normal
+        #tv.insert('', '999', text=variable, values=('xXx','99', 'Ok'))
+        efedeexisi = aOrd[:] # again!!!!!!!!!!!!
 
-    #print ("longiud de aOrd es: "+ repr(len(aOrd)))
-    for g in range(rango2):
-        tv.insert('', 'end', text= g, values=(respa[g], a[g], efedeexisi[g], derivada[g]))
-    tv.pack()
-    ventana2.mainloop()
+        rango = len(efedeexisi)
+        for i in range(rango):
+            efedeexisi[i]=float(efedeexisi[i])/rango
+        derivada=a[:]   
+        for x in range(rango2):
+            valorder = float(aOrd[x])/1.22
+            derivada[x]=1-(exp*(valorder))
+
+        #print ("longiud de aOrd es: "+ repr(len(aOrd)))
+        for g in range(rango2):
+            tv.insert('', 'end', text= g, values=(respa[g], a[g], efedeexisi[g], derivada[g]))
+        tv.pack()
+        ventana2.mainloop()
+    else:
+        print("no se va a abrir")
         
     
 ##  Styles:
