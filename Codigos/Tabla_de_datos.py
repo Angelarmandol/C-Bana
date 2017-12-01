@@ -71,8 +71,8 @@ def burbuja(aOrd): #ordena el arreglo de menor a mayor
                 aOrd[j+1]=aOrd[j]
                 aOrd[j]=k
     longaOrd = len(aOrd)
-    print ("al final de l metodo, valor inicial de aOrg es: "+repr(aOrd[0]))
-    print ("al final de l metodo, valor final de aOrg es: "+repr(aOrd[117]))
+    #print ("al final de l metodo, valor inicial de aOrg es: "+repr(aOrd[0]))
+    #print ("al final de l metodo, valor final de aOrg es: "+repr(aOrd[117]))
     global aOrdGlobal
     aOrdGlobal = aOrd
 
@@ -82,55 +82,40 @@ def comprobar():
     global a
     global pasa
     global numerico
+    global numerovalido
+    global mayorcincuenta
     a=texto.get("1.0","end-1c")
     numerico=0
     mayorcincuenta=0
     numerovalido=1
-    
     pasa=0
     a=a.replace(",",".")
     #a = "0.25051451 0.8521 0.5454 0.54545 0.545454 0.65665 0.14564654 0.156654156 0.5458454 0.5445445 0.787878 0.986535"
-    '''
-    a = " "
-    alea=0
-    for i in range(50):
-        alea = random.random()
-        a = a+" "+repr(alea)
-'''
-    
-
-    
-    if(a.isdigit()):
-        print ("no es numerica")
-        numerico=0
-        hola()
-    else:
-        print("numerica???????")
-        numerico=1
-        hola()
-        print (" ")
-        
-        
-
-        a = a.split(" ")
-        #print(a)
-        #a.pop(0)
-        #a.pop(0)
-        b = len(a)
-        contador=0
-        
-    '''
-        for i in range (b):
-            print (a[i])
-            print("/////"+repr(b))
-    '''
-    a=a[0].split("\n")
-
-    print(a[0])
-    print(a[1])
-    print ("longiyud es "+repr(len(a)))
+    a=a.split("\n")
     rango = len(a)
-    
+    print("-------------------------------rango de a es: "+repr(rango))
+    for i in range(rango):
+        if(a[i].isdigit()):
+            print ("no es numerica")
+            numerico=0
+            hola()
+        else:
+            print("numerica???????")
+            numerico=1
+            hola()
+            print (" ")
+            
+            
+
+            
+            #print(a)
+            #a.pop(0)
+            #a.pop(0)
+            b = len(a)
+            contador=0
+
+
+  
 
     global rango2
     rango2=rango
@@ -146,8 +131,13 @@ def comprobar():
 
         mayorcincuenta=0
         hola()
-        ctypes.windll.user32.MessageBoxW(0, "No hay numeros suficientes para generar la tabla", "Error", 0)
+        ctypes.windll.user32.MessageBoxW(0, "No hay numeros suficientes para generar la tabla o el formato no es adecuado \nCodigo de error: ", "Error", 0)
   
+
+
+
+
+
 
     if(numerico == 1 and mayorcincuenta == 1 and numerovalido==1):
         print("No hay nada malo")
@@ -163,9 +153,7 @@ def comprobar():
         hola()
 
     
-    print("Termina comprobar, a es:")
-    print (a[0])
-    print (a[1])
+  
 
     
 def otraventana():
